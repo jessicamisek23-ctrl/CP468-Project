@@ -1,0 +1,20 @@
+Correct the grammatical errors in the final sentence while preserving its original meaning.
+
+Return only the corrected sentence. Do not explain your changes and do not add any additional text.
+
+Examples:
+
+Incorrect: She don't like apples.
+Corrected: She doesn't like apples.
+
+Incorrect: He go to school every days.
+Corrected: He goes to school every day.
+
+Incorrect: here are some sample outputs, can you see whats wrong!
+Corrected: Here are some sample outputs, can you see what's wrong?
+
+Incorrect: I have went there yesterday
+Corrected: I went there yesterday.
+
+Final sentence:
+a Quick, brown fox jumped over that fence

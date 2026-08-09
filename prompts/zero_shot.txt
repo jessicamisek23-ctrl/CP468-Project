@@ -1,0 +1,6 @@
+Correct the grammatical errors in the sentence below while preserving its original meaning.
+
+Return only the corrected sentence. Do not explain your changes and do not add any additional text.
+
+Sentence:
+a Quick, brown fox jumped over that fence
