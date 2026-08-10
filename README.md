@@ -776,7 +776,6 @@ The results can then be compared against the attention-based model to measure th
 
 The Gemini baseline requires an API key.
 
-Do **not** place API keys directly in source code or commit them to GitHub.
 
 ### Windows PowerShell
 
@@ -814,7 +813,7 @@ outputs/predictions/
 outputs/metrics/
 ```
 
-API token usage should be recorded so that the approximate Gemini API cost can be reported in the final report.
+API token usage is recorded for the approximate Gemini API cost, which can be reported in the final report.
 
 ---
 
@@ -906,7 +905,7 @@ python -m scripts.length_analysis
 
 # 28. Main Experimental Settings
 
-Unless otherwise stated in the final report, the main LSTM configuration is:
+The main LSTM configuration is:
 
 | Hyperparameter | Value |
 |---|---:|
@@ -999,8 +998,6 @@ outputs/metrics/gemini_few_shot_metrics.json
 outputs/metrics/length_analysis.csv
 ```
 
-Exact filenames may vary slightly depending on the final implementation.
-
 ---
 
 # 31. Final Comparison
@@ -1014,13 +1011,13 @@ The final report compares:
 | Gemini Zero-Shot | TBD | TBD | TBD | API cost |
 | Gemini Few-Shot | TBD | TBD | TBD | API cost |
 
-Results should be filled in after the final experiments are completed.
+Results for the final experiments can be found in the report.
 
 ---
 
 # 32. Qualitative Error Analysis
 
-At least 10 representative test examples are analyzed.
+10 representative test examples are analyzed.
 
 Potential error categories include:
 
@@ -1074,29 +1071,7 @@ Important limitations considered include:
 
 ---
 
-# 35. Project Report
-
-The final submission includes a system report covering:
-
-- dataset;
-- system design;
-- experimental settings;
-- quantitative results;
-- qualitative error analysis;
-- limitations;
-- discussion;
-- team contributions;
-- AI-use disclosure.
-
-Final report:
-
-```text
-ADD REPORT LINK HERE
-```
-
----
-
-# 36. Demo Video
+# 35. Demo Video
 
 The project includes an approximately 8-minute demonstration video.
 
@@ -1108,48 +1083,7 @@ ADD DEMO VIDEO LINK HERE
 
 ---
 
-# 37. Team Members and Contributions
-
-| Team Member | Contribution |
-|---|---|
-| Member 1 | Model architecture / Encoder / Attention / Decoder |
-| Member 2 | Dataset / Preprocessing / Vocabulary / DataLoaders |
-| Member 3 | Training / Evaluation / LLM baseline |
-| Member 4 | Experiments / Report |
-| Member 5 | Analysis / Documentation / Demo |
-
-Replace the placeholders above with the team's actual names and final contributions.
-
-A detailed contribution statement is included in the report appendix.
-
----
-
-# 38. AI Use Disclosure
-
-Any use of generative AI tools during development, debugging, documentation, or report preparation is disclosed in the project report according to course requirements.
-
-The final report contains the complete AI-use disclosure.
-
----
-
-# 39. References
-
-Include the final dataset and research citations here.
-
-Suggested categories:
-
-1. C4_200M Synthetic Grammatical Error Correction dataset.
-2. Seq2Seq / encoder-decoder literature.
-3. Bahdanau attention.
-4. LSTM literature.
-5. GLEU evaluation metric.
-6. Gemini documentation/model information.
-
-Full formatted references are provided in the project report.
-
----
-
-# 40. License
+# 36. License
 
 This repository contains course-project code.
 
