@@ -38,13 +38,9 @@ def train_epoch(
 
     epoch_loss = 0.0
 
-    for source, lengths, target in dataloader:
+    for batch_idx, (source, lengths, target) in enumerate(dataloader):
         source = source.to(DEVICE)
-
-        # pack_padded_sequence eventually moves lengths to CPU,
-        # but keeping this consistent is fine.
         lengths = lengths.to(DEVICE)
-
         target = target.to(DEVICE)
 
         optimizer.zero_grad()
@@ -58,7 +54,6 @@ def train_epoch(
 
         vocabulary_size = outputs.shape[-1]
 
-        # Ignore timestep 0 because it corresponds to SOS.
         logits = outputs[1:].reshape(
             -1,
             vocabulary_size,
@@ -78,6 +73,13 @@ def train_epoch(
         optimizer.step()
 
         epoch_loss += loss.item()
+
+        # Progress update every 100 batches
+        if batch_idx % 100 == 0:
+            print(
+                f"Batch {batch_idx}/{len(dataloader)}"
+                f" | Loss: {loss.item():.4f}"
+            )
 
     return epoch_loss / len(dataloader)
 

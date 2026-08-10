@@ -40,6 +40,12 @@ She doesn't like apples.
 
 Download **one shard** of the C4_200M dataset.
 
+The link we used was:
+
+```link
+https://www.kaggle.com/datasets/dariocioni/c4200m/data?select=C4_200M.tsv-00004-of-00010
+```
+
 The project was developed using the following shard:
 
 ```text
