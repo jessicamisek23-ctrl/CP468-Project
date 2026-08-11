@@ -1,0 +1,7 @@
+{
+  "test_examples": 5000,
+  "gleu": 0.401374038519906,
+  "exact_match_accuracy": 0.002,
+  "inference_time_seconds": 243.41711366700474,
+  "device": "cpu"
+}
