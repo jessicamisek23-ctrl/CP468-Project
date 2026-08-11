@@ -1073,13 +1073,11 @@ Important limitations considered include:
 
 # 35. Demo Video
 
-The project includes an approximately 8-minute demonstration video.
+An approximately 8-minute demonstration video accompanies this project submission.
 
-Demo link:
+Location: MyLS Dropbox
 
-```text
-ADD DEMO VIDEO LINK HERE
-```
+```text demo/demo_video.mp4
 
 ---
 
