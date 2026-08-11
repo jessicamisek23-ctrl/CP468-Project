@@ -1103,6 +1103,16 @@ Important limitations considered include:
 
 ---
 
+# 35. Demo Video
+
+An approximately 8-minute demonstration video accompanies this project submission.
+
+Link to Demo Video: https://drive.google.com/drive/folders/15Q1xqM_gXEaIAXZZ1zhdFHbEDSAg1vdG
+
+```text demo/demo_video.mp4
+
+---
+
 # 36. License
 
 This repository contains course-project code.
