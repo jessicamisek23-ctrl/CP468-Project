@@ -91,7 +91,7 @@ The raw dataset file is **not stored in this GitHub repository** because of its 
 See:
 
 ```text
-data/README.md
+DATASET.md
 ```
 
 for dataset download and preparation instructions.
@@ -451,7 +451,6 @@ Gemini output
 CP468-Project/
 │
 ├── data/
-│   ├── README.md
 │   │
 │   ├── raw/
 │   │   └── C4_200M.tsv-00004-of-00010
@@ -492,7 +491,7 @@ CP468-Project/
 │   ├── dataset.py
 │   ├── decoder.py
 │   ├── encoder.py
-|   |__ evaluate_no_attention.py
+│   ├── evaluate_no_attention.py
 │   ├── evaluate.py
 │   ├── llm_baseline.py
 │   ├── metrics.py
@@ -504,6 +503,7 @@ CP468-Project/
 │
 ├── .gitignore
 ├── README.md
+├── DATASET.md
 └── requirements.txt
 ```
 
@@ -572,7 +572,7 @@ python -m pip install -r requirements.txt
 Download one C4_200M TSV shard as described in:
 
 ```text
-data/README.md
+DATASET.md
 ```
 
 Place the file at:
@@ -677,27 +677,13 @@ source, source_lengths, target
 
 # 20. Train the Main LSTM + Attention Model
 
-Before running the full experiment, it is recommended to temporarily use:
-
-```python
-EPOCHS = 1
-```
-
-in `src/train.py` to verify that the entire training pipeline works.
-
-Run:
-
-```bash
-python -m src.train
-```
-
-After the one-epoch integration test succeeds, restore:
+Using:
 
 ```python
 EPOCHS = 20
 ```
 
-and run:
+run:
 
 ```bash
 python -m src.train
@@ -773,7 +759,45 @@ The results can then be compared against the attention-based model to measure th
 
 ---
 
-# 23. Gemini API Setup
+# 23. Evaluate the No-Attention Ablation
+
+After training the no-attention model, evaluate the saved checkpoint on the held-out test set:
+
+```bash
+python -m src.evaluate_no_attention
+```
+
+This loads:
+
+```text
+models/best_no_attention_model.pt
+```
+
+and evaluates it on the same held-out test set used for the attention-based LSTM.
+
+Predictions are saved to:
+
+```text
+outputs/predictions/no_attention_predictions.csv
+```
+
+Metrics are saved to:
+
+```text
+outputs/metrics/no_attention_metrics.json
+```
+
+The reported metrics include:
+
+- GLEU
+- Exact Match Accuracy
+- Inference Time
+
+These results provide the ablation comparison against the attention-based LSTM.
+
+---
+
+# 24. Gemini API Setup
 
 The Gemini baseline requires an API key.
 
@@ -792,7 +816,7 @@ export GEMINI_API_KEY="YOUR_API_KEY"
 
 ---
 
-# 24. Run the Gemini Baseline
+# 25. Run the Gemini Baseline
 
 Run:
 
@@ -818,7 +842,7 @@ API token usage is recorded for the approximate Gemini API cost, which can be re
 
 ---
 
-# 25. Build Qualitative Comparison Data
+# 26. Build Qualitative Comparison Data
 
 After both the LSTM and Gemini experiments have been completed:
 
@@ -839,7 +863,7 @@ The file can be used to select at least 10 examples for the qualitative error an
 
 ---
 
-# 26. Run Sentence-Length Analysis
+# 27. Run Sentence-Length Analysis
 
 Run:
 
@@ -862,7 +886,7 @@ This helps determine whether the performance gap between the LSTM and Gemini cha
 
 ---
 
-# 27. Recommended Full Reproduction Order
+# 28. Recommended Full Reproduction Order
 
 From a clean repository, run the project in the following order:
 
@@ -891,6 +915,10 @@ python -m src.no_attention
 ```
 
 ```bash
+python -m src.evaluate_no_attention
+```
+
+```bash
 python -m src.llm_baseline
 ```
 
@@ -904,7 +932,7 @@ python -m scripts.length_analysis
 
 ---
 
-# 28. Main Experimental Settings
+# 29. Main Experimental Settings
 
 The main LSTM configuration is:
 
@@ -936,7 +964,7 @@ The main LSTM configuration is:
 
 ---
 
-# 29. Reproducibility
+# 30. Reproducibility
 
 Randomness is controlled using:
 
@@ -971,7 +999,7 @@ The raw dataset is not committed due to size, but the repository provides:
 
 ---
 
-# 30. Expected Outputs
+# 31. Expected Outputs
 
 ## Models
 
@@ -987,6 +1015,7 @@ outputs/predictions/lstm_predictions.csv
 outputs/predictions/gemini_zero_shot_predictions.csv
 outputs/predictions/gemini_few_shot_predictions.csv
 outputs/predictions/qualitative_candidates.csv
+outputs/predictions/no_attention_predictions.csv
 ```
 
 ## Metrics
@@ -997,11 +1026,13 @@ outputs/metrics/lstm_metrics.json
 outputs/metrics/gemini_zero_shot_metrics.json
 outputs/metrics/gemini_few_shot_metrics.json
 outputs/metrics/length_analysis.csv
+outputs/metrics/no_attention_metrics.json
+outputs/metrics/no_attention_training.json
 ```
 
 ---
 
-# 31. Final Comparison
+# 32. Final Comparison
 
 The final report compares:
 
@@ -1016,7 +1047,7 @@ Results for the final experiments can be found in the report.
 
 ---
 
-# 32. Qualitative Error Analysis
+# 33. Qualitative Error Analysis
 
 10 representative test examples are analyzed.
 
@@ -1040,7 +1071,7 @@ Examples should be chosen to demonstrate different model behaviors rather than o
 
 ---
 
-# 33. Engineering Trade-Offs
+# 34. Engineering Trade-Offs
 
 The report discusses trade-offs between a task-specific LSTM and a general-purpose LLM, including:
 
@@ -1057,7 +1088,7 @@ The report discusses trade-offs between a task-specific LSTM and a general-purpo
 
 ---
 
-# 34. Limitations
+# 35. Limitations
 
 Important limitations considered include:
 
@@ -1069,16 +1100,6 @@ Important limitations considered include:
 - compute limitations;
 - differences in model scale;
 - fairness of comparing a model trained from scratch with a pretrained foundation model.
-
----
-
-# 35. Demo Video
-
-An approximately 8-minute demonstration video accompanies this project submission.
-
-Location: MyLS Dropbox
-
-```text demo/demo_video.mp4
 
 ---
 
