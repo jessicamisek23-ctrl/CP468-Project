@@ -3,4 +3,4 @@ Correct the grammatical errors in the sentence below while preserving its origin
 Return only the corrected sentence. Do not explain your changes and do not add any additional text.
 
 Sentence:
-a Quick, brown fox jumped over that fence
+{sentence}

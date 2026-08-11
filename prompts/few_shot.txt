@@ -17,4 +17,4 @@ Incorrect: I have went there yesterday
 Corrected: I went there yesterday.
 
 Final sentence:
-a Quick, brown fox jumped over that fence
+{sentence}
